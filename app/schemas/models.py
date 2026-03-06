@@ -1,27 +1,25 @@
 from pydantic import BaseModel
 from enum import Enum
+from datetime import datetime
 
 
 class TaskStatus(str, Enum):
-    todo = 'todo'
-    in_progerss = 'in_progerss'
-    dome = 'dome'
+    todo = "todo"
+    in_progress = "in_progress"
+    done = "done"
 
-class TaskBase(BaseModel):
+class TaskCreate(BaseModel):
     title: str
-    description: str
-    status: TaskStatus
+    description: str | None = None
 
-class TaskCreate(TaskBase):
-    pass 
-
-class TaskUpdate(TaskBase):
+class TaskUpdate(BaseModel):
     title: str | None = None
     description: str | None = None
     status: TaskStatus | None = None
 
-class TaskResponse(TaskBase):
+class TaskResponse(BaseModel):
     id: int
-    created_at: str
-    status: TaskStatus | None = None
-
+    title: str
+    description: str | None
+    status: TaskStatus
+    created_at: datetime
