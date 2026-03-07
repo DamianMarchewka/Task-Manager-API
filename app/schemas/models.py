@@ -23,3 +23,5 @@ class TaskResponse(BaseModel):
     description: str | None
     status: TaskStatus
     created_at: datetime
+
+    model_config = {"from_attributes": True}
