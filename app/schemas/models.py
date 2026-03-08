@@ -1,27 +1,29 @@
 from pydantic import BaseModel
 from enum import Enum
 from datetime import datetime
-
+from typing import Optional
 
 class TaskStatus(str, Enum):
     todo = "todo"
     in_progress = "in_progress"
     done = "done"
 
-class TaskCreate(BaseModel):
+class TaskBase(BaseModel):
     title: str
-    description: str | None = None
+    description: str
 
-class TaskUpdate(BaseModel):
-    title: str | None = None
-    description: str | None = None
-    status: TaskStatus | None = None
+class TaskCreate(TaskBase):
+    pass
 
-class TaskResponse(BaseModel):
+class TaskUpdate(TaskBase):
+    title: Optional[str] = None
+    description: Optional[str] = None
+    status: Optional[TaskStatus] = None
+
+class TaskResponse(TaskBase):
     id: int
-    title: str
-    description: str | None
     status: TaskStatus
     created_at: datetime
 
     model_config = {"from_attributes": True}
+    
