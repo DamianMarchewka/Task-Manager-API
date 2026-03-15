@@ -10,7 +10,8 @@ def get_task_by_id(db: Session, task_id: int) -> Task:
     if task is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Task not found")
+            detail="Task not found"
+            )
     return task
 
 
@@ -19,6 +20,13 @@ def create_task(db: Session, task_create: TaskCreate) -> Task:
         title=task_create.title,
         description=task_create.description,
         status=TaskStatus.todo
-    )
-
+        )
     return task_repository.create_task(db, task)
+
+
+def get_tasks(db: Session, skip: int = 0, limit: int = 20):
+    if limit > 100:
+        limit = 100
+    if skip < 0:
+        skip = 0
+    return task_repository.get_tasks(db, skip=skip, limit=limit)
