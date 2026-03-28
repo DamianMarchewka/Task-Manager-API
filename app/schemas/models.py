@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from enum import Enum
 from datetime import datetime
 from typing import Optional
@@ -25,5 +25,5 @@ class TaskResponse(TaskBase):
     status: TaskStatus
     created_at: datetime
 
-    model_config = {"from_attributes": True}
+    model_config = ConfigDict(from_attributes=True)
     

@@ -1,9 +1,8 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 from app.database.session import get_db
-from app.schemas.models import TaskCreate, TaskResponse
+from app.schemas.models import TaskCreate, TaskResponse, TaskUpdate
 from app.services import task_service
-from typing import List
 
 
 router = APIRouter(prefix="/tasks", tags=["Tasks"])
@@ -25,6 +24,18 @@ def get_task(
     return task_service.get_task_by_id(db, task_id)
 
 
-@router.get("/", response_model=List[TaskResponse])
-def list_tasks(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)):
+@router.get("/", response_model=list[TaskResponse])
+def list_tasks(skip: int = Query(0, ge=0),
+               limit: int = Query(20, le=100),
+               db: Session = Depends(get_db)
+):
     return task_service.get_tasks(db, skip=skip, limit=limit)
+
+
+@router.patch("/tasks/{task_id}", response_model=TaskResponse)
+def task_update(
+    task_id: int,
+    task_update: TaskUpdate,
+    db: Session = Depends(get_db)
+):
+    return task_service.update_task(db, task_id, task_update)

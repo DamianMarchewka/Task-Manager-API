@@ -21,10 +21,16 @@ def get_tasks(db: Session, skip: int, limit: int) -> list[Task]:
     return result.scalars().all()
 
 
+def update_task(db: Session, task: Task) -> Task:
+    db.commit()
+    db.refresh(task)
+    return task
 
 
 
-# TODO dadać funkcje (get, update, delete)
-# get_tasks
+
+
+# TODO dadać funkcje (update, delete)
 # update_task
 # delete_task
+
