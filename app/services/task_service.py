@@ -39,3 +39,9 @@ def update_task(db: Session, task_id: int, task_update: TaskUpdate) -> Task:
     for key, value in update_data.items():
         setattr(task, key, value)
     return task_repository.update_task(db, task)
+
+
+def delete_task(db: Session, task_id: int) -> None:
+    task = get_task_by_id(db, task_id)
+    task_repository.delete_task(db, task)
+    return None

@@ -27,10 +27,7 @@ def update_task(db: Session, task: Task) -> Task:
     return task
 
 
-
-
-
-# TODO dadać funkcje (update, delete)
-# update_task
-# delete_task
-
+def delete_task(db: Session, task: Task) -> Task:
+    db.delete(task)
+    db.commit()
+    return task
