@@ -83,12 +83,12 @@ http://127.0.0.1:8000/docs
 Create a task POST /tasks/
 Request body:
 ```
-  JSON
-  POST /tasks/
-  {
-    "title": "Task 1",
-    "description": "Sample description"
-  }
+JSON
+POST /tasks/
+{
+"title": "Task 1",
+"description": "Sample description"
+}
 ```
 
 ## Tests
