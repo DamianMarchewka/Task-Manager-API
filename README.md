@@ -80,11 +80,9 @@ http://127.0.0.1:8000/docs
 ```
 
 ## Sample requests
-```
-Create a task
-POST /tasks/
+Create a task POST /tasks/
 Request body:
-
+```
   JSON
   POST /tasks/
   {
