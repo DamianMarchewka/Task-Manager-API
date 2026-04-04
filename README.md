@@ -7,20 +7,20 @@ An educational project prepared for expansion with authorization (JWT).
 
 
 ## Architecture
-The project uses a layered architecture:
-- Router → HTTP handling
-- Service → business logic
-- Repository → database access
+The project uses a layered architecture to maintain a clean separation of concerns:
+- Router → HTTP handling & request validation
+- Service → Business logic
+- Repository → Database access & ORM operations
 
 
 ## Technologies
-- Python
-- FastAPI
-- SQLAlchemy
-- SQLite
-- Pydantic
-- Uvicorn
-- Pytest (tests)
+- Python 3.x
+- FastAPI (Web framework)
+- SQLAlchemy (ORM)
+- SQLite (Database)
+- Pydantic (Data validation)
+- Uvicorn (ASGI server)
+- Pytest (Testing framework)
 
 
 ## Functionalities
@@ -40,44 +40,58 @@ DELETE /tasks/{id}   - Delete task
 
 
 ## Project structure — format
+'''text
 app/
- ├── routers/
- ├── services/
- ├── repositories/
- ├── models/
- ├── schemas/
- └── database/
+ ├── database/        # DB connection & session setup
+ ├── models/          # SQLAlchemy ORM models
+ ├── repositories/    # Data access layer
+ ├── routers/         # API endpoints
+ ├── schemas/         # Pydantic models (data validation)
+ ├── services/        # Business logic layer
+ └── main.py          # Application entry point
 
 
- ## Project launch  (Sekcja do zmiany docelowy będzię Docker i zdalne repzytorium)
-<bash>
-git clone <repo-url>
-cd task-manager-api
+## Project launch  (Note: Section to be updated after Docker deployment and pushing to remote repository)
+  '''bash
+  # Clone the repository
+    git clone <repo-url>
+    cd task-manager-api
 
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate   # Windows
+  # Create and activate virtual environment
+    python -m venv venv
+    source venv/bin/activate  # Linux/Mac
+    or
+    venv\Scripts\activate   # Windows
 
-pip install -r requirements.txt
+  # Install dependencies
+    pip install -r requirements.txt
 
-uvicorn app.main:app --reload
+  # Run the application
+    uvicorn app.main:app --reload
 
 
 ## API documentation
-Swagger UI:
+Once the server is running, interactive Swagger documentation is available at:
 http://127.0.0.1:8000/docs
 
 
 ## Sample requests
+Create a task
 POST /tasks/
-{
-  "title": "Task 1",
-  "description": "Sample description"
-}
+Request body:
+
+  JSON
+  POST /tasks/
+  {
+    "title": "Task 1",
+    "description": "Sample description"
+  }
 
 
 ## Tests
-pytest
+To run the test suite, execute:
+'''bash
+  pytest
 
 
 ## Status

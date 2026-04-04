@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query, status
 from sqlalchemy.orm import Session
 from app.database.session import get_db
 from app.schemas.models import TaskCreate, TaskResponse, TaskUpdate
@@ -8,7 +8,7 @@ from app.services import task_service
 router = APIRouter(prefix="/tasks", tags=["Tasks"])
 
 
-@router.post("/", response_model=TaskResponse)
+@router.post("/", response_model=TaskResponse, status_code=status.HTTP_201_CREATED)
 def create_task(
     task: TaskCreate, 
     db: Session = Depends(get_db)
