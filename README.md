@@ -40,7 +40,7 @@ DELETE /tasks/{id}   - Delete task
 
 
 ## Project structure — format
-'''text
+```text
 app/
  ├── database/        # DB connection & session setup
  ├── models/          # SQLAlchemy ORM models
@@ -49,6 +49,7 @@ app/
  ├── schemas/         # Pydantic models (data validation)
  ├── services/        # Business logic layer
  └── main.py          # Application entry point
+```
 
 
 ## Project launch  (Note: Section to be updated after Docker deployment and pushing to remote repository)
