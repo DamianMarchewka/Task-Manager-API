@@ -57,7 +57,7 @@ app/
 ## Project launch  (Note: Section to be updated after Docker deployment and pushing to remote repository)
   # Clone the repository
     bash
-    git clone <repo-url>
+    git clone <https://github.com/DamianMarchewka/Task-Manager-API>
     cd task-manager-api
 
   # Create and activate virtual environment
