@@ -32,11 +32,13 @@ The project uses a layered architecture to maintain a clean separation of concer
 
 
 ## API Endpoints
+```
 POST   /tasks        - Create task
 GET    /tasks        - List tasks
 GET    /tasks/{id}   - Get task by ID
 PATCH  /tasks/{id}   - Update task
 DELETE /tasks/{id}   - Delete task
+```
 
 
 ## Project structure — format
@@ -53,8 +55,8 @@ app/
 
 
 ## Project launch  (Note: Section to be updated after Docker deployment and pushing to remote repository)
-  '''bash
   # Clone the repository
+    bash
     git clone <repo-url>
     cd task-manager-api
 
@@ -73,10 +75,12 @@ app/
 
 ## API documentation
 Once the server is running, interactive Swagger documentation is available at:
+```
 http://127.0.0.1:8000/docs
-
+```
 
 ## Sample requests
+```
 Create a task
 POST /tasks/
 Request body:
@@ -87,13 +91,14 @@ Request body:
     "title": "Task 1",
     "description": "Sample description"
   }
-
+```
 
 ## Tests
 To run the test suite, execute:
-'''bash
-  pytest
-
+```
+bash
+pytest
+```
 
 ## Status
 Project in progress — core CRUD functionality completed.
