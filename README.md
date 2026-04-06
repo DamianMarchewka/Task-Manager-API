@@ -2,7 +2,7 @@
 
 
 ## Description
-A scalable, production-oriented REST API for task management built with FastAPI,
+A scalable, production-oriented REST API for task management built with FastAPI,  
 designed with clean architecture and ready for JWT-based authentication.
 
 
