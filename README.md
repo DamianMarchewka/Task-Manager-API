@@ -2,8 +2,8 @@
 
 
 ## Description
-A REST API for task management (CRUD) built with FastAPI. 
-An educational project prepared for expansion with authorization (JWT).
+A scalable, production-oriented REST API for task management built with FastAPI,
+designed with clean architecture and ready for JWT-based authentication.
 
 
 ## Architecture
