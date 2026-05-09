@@ -30,6 +30,41 @@ def test_get_task(client: TestClient):
     assert result_data["description"] == "Test description"
 
 
+def test_list_tasks_empty(client: TestClient):
+    response = client.get("/tasks/")
+    assert response.status_code == 200
+    assert response.json() == []
+
+
+def test_list_tasks_with_data(client: TestClient):
+    client.post("/tasks/", json={
+        "title": "First test task",
+        "description": "First test description"
+    })
+    client.post("/tasks/", json={
+        "title": "Second test task",
+        "description": "Second test description"
+    })
+    response = client.get("/tasks/")
+    data = response.json()
+
+    assert response.status_code == 200
+    assert len(data) == 2
+
+    assert all("id" in i for i in data)
+    assert all("created_at" in i for i in data)
+    assert all(item["status"] == "todo" for item in data)
+
+    titles = [item["title"] for item in data]
+    descriptions = [item["description"] for item in data]
+
+    assert "First test task" in titles
+    assert "Second test task" in titles
+
+    assert "First test description" in descriptions
+    assert "Second test description" in descriptions
+
+
 def test_update_task(client: TestClient):
     response = client.post("/tasks/", json={
         "title": "Test title",
