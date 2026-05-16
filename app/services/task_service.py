@@ -24,8 +24,8 @@ def create_task(db: Session, task_create: TaskCreate) -> Task:
     return task_repository.create_task(db, task)
 
 
-def get_tasks(db: Session, skip: int, limit: int) -> list[Task]:
-    return task_repository.get_tasks(db, skip=skip, limit=limit)
+def get_tasks(db: Session, offset: int, limit: int) -> list[Task]:
+    return task_repository.get_tasks(db, offset=offset, limit=limit)
 
 
 def update_task(db: Session, task_id: int, task_update: TaskUpdate) -> Task:

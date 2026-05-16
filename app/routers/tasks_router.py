@@ -25,11 +25,11 @@ def get_task(
 
 
 @router.get("/", response_model=list[TaskResponse])
-def list_tasks(skip: int = Query(0, ge=0),
+def list_tasks(offset: int = Query(0, ge=0),
                limit: int = Query(20, le=100),
                db: Session = Depends(get_db)
 ):
-    return task_service.get_tasks(db, skip=skip, limit=limit)
+    return task_service.get_tasks(db, offset=offset, limit=limit)
 
 
 @router.patch("/{task_id}", response_model=TaskResponse)

@@ -15,8 +15,8 @@ def get_task_by_id(db: Session, task_id: int) -> Task | None:
     return db.scalars(stmt).first()
 
 
-def get_tasks(db: Session, skip: int, limit: int) -> list[Task]:
-    stmt = (select(Task).order_by(Task.id).offset(skip).limit(limit))
+def get_tasks(db: Session, offset: int, limit: int) -> list[Task]:
+    stmt = (select(Task).order_by(Task.id).offset(offset).limit(limit))
     result = db.execute(stmt)
     return result.scalars().all()
 
