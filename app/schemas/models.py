@@ -5,7 +5,7 @@ from typing import Optional
 
 class TaskStatus(str, Enum):
     todo = "todo"
-    in_progress = "in_progress"
+    in_progress = "in progress"
     done = "done"
 
 class TaskBase(BaseModel):

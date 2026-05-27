@@ -3,6 +3,7 @@ from fastapi import HTTPException, status
 from app.repositorys import task_repository
 from app.models.task import Task
 from app.schemas.models import TaskCreate, TaskStatus, TaskUpdate
+from typing import Optional
 
 
 def get_task_by_id(db: Session, task_id: int) -> Task:
@@ -24,8 +25,12 @@ def create_task(db: Session, task_create: TaskCreate) -> Task:
     return task_repository.create_task(db, task)
 
 
-def get_tasks(db: Session, offset: int, limit: int) -> list[Task]:
-    return task_repository.get_tasks(db, offset=offset, limit=limit)
+def get_tasks(db: Session,
+              status: Optional[TaskStatus],
+              title: Optional[str],
+              offset: int,
+              limit: int) -> list[Task]:
+    return task_repository.get_tasks(db, status=status, title=title, offset=offset, limit=limit)
 
 
 def update_task(db: Session, task_id: int, task_update: TaskUpdate) -> Task:
