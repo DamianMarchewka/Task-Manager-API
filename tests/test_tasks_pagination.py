@@ -45,3 +45,4 @@ def test_tasks_with_pagination(client: TestClient):
 
     assert first_ids != second_ids
     assert third_ids == [5]
+# TODO (quality): verify exact order and IDs of paginated results

@@ -12,7 +12,7 @@ class TaskBase(BaseModel):
     title: str
     description: str
 
-#TODO think about 'better' TaskCreate model
+# TODO think about 'better' TaskCreate model
 class TaskCreate(TaskBase):
     pass
 
