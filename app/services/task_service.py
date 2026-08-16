@@ -28,9 +28,13 @@ def create_task(db: Session, task_create: TaskCreate) -> Task:
 def get_tasks(db: Session,
               status: Optional[TaskStatus],
               title: Optional[str],
+              sort_by: Optional[str],
+              order: Optional[str],
               offset: int,
               limit: int) -> list[Task]:
-    return task_repository.get_tasks(db, status=status, title=title, offset=offset, limit=limit)
+    return task_repository.get_tasks(db, status=status, title=title,
+                                     sort_by=sort_by, order=order,
+                                       offset=offset, limit=limit)
 
 
 def update_task(db: Session, task_id: int, task_update: TaskUpdate) -> Task:

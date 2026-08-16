@@ -28,11 +28,13 @@ def get_task(
 @router.get("/", response_model=list[TaskResponse])
 def list_tasks(status: Optional[TaskStatus] = Query(None),
                title: Optional[str] = Query(None),
+               sort_by: Optional[str] = Query(None),
+               order: Optional[str] = Query(None),
                offset: int = Query(0, ge=0),
                limit: int = Query(20, le=100),
                db: Session = Depends(get_db)
 ):
-    return task_service.get_tasks(db, offset=offset, limit=limit, status=status, title=title)
+    return task_service.get_tasks(db, status=status, title=title, sort_by=sort_by, order=order, offset=offset, limit=limit)
 
 
 @router.patch("/{task_id}", response_model=TaskResponse)

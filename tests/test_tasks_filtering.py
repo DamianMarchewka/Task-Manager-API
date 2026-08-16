@@ -78,6 +78,7 @@ def test_task_combined_filtring(client: TestClient):
 
     assert response.status_code == 200
     assert len(data) == 1
+    assert task_id_1 in ids
     assert all(task["status"] == "done" for task in data)
     assert all("test" in task["title"].lower() for task in data)
-    assert task_id_1 in ids
+    
