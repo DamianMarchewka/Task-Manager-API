@@ -1,0 +1,9 @@
+
+services:
+  app:
+    build: .
+    container_name: task_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
