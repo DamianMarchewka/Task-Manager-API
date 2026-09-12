@@ -1,109 +1,168 @@
-## Task Manager API
+# Task Manager API
 
+[![CI](https://github.com/DamianMarchewka/Task-Manager-API/actions/workflows/ci.yml/badge.svg)](https://github.com/DamianMarchewka/Task-Manager-API/actions/workflows/ci.yml)
 
-## Description
-A scalable, production-oriented REST API for task management built with FastAPI,  
-designed with clean architecture and ready for JWT-based authentication.
+---
 
+## 📌 Description
 
-## Architecture
-The project uses a layered architecture to maintain a clean separation of concerns:
-- Router → HTTP handling & request validation
-- Service → Business logic
-- Repository → Database access & ORM operations
+A scalable, production-oriented REST API for task management built with FastAPI, designed with clean architecture and prepared for future authentication and scaling.
 
+---
 
-## Technologies
+## 🏗️ Architecture
+
+The project follows a layered architecture:
+
+- **Router** → HTTP layer (requests & responses)
+- **Service** → Business logic layer
+- **Repository** → Database access layer
+
+This separation improves maintainability and scalability.
+
+---
+
+## 🛠️ Technologies
+
 - Python 3.x
-- FastAPI (Web framework)
-- SQLAlchemy (ORM)
-- SQLite (Database)
-- Pydantic (Data validation)
-- Uvicorn (ASGI server)
-- Pytest (Testing framework)
+- FastAPI
+- SQLAlchemy
+- SQLite
+- Pydantic
+- Uvicorn
+- Pytest
+- Docker
+- Docker Compose
+- GitHub Actions (CI/CD)
 
+---
 
-## Functionalities
-- Creating tasks
-- Retrieving tasks (by ID and list)
-- Updating tasks (PATCH)
-- Deleting tasks (DELETE)
-- Pagination (limit, offset)
+## ⚙️ Functionalities
 
+- Create tasks
+- Read tasks (single & list)
+- Update tasks
+- Delete tasks
+- Pagination (limit / offset)
 
-## API Endpoints
+---
+
+## 🌐 API Endpoints
+
+| Method | Endpoint      | Description        |
+|--------|--------------|--------------------|
+| POST   | /tasks       | Create task        |
+| GET    | /tasks       | Get all tasks      |
+| GET    | /tasks/{id}  | Get task by ID     |
+| PATCH  | /tasks/{id}  | Update task        |
+| DELETE | /tasks/{id}  | Delete task        |
+
+---
+
+## 🚀 Project Setup
+
+### Clone repository
 ```
-POST   /tasks        - Create task
-GET    /tasks        - List tasks
-GET    /tasks/{id}   - Get task by ID
-PATCH  /tasks/{id}   - Update task
-DELETE /tasks/{id}   - Delete task
-```
-
-
-## Project structure — format
-```text
-app/
- ├── database/        # DB connection & session setup
- ├── models/          # SQLAlchemy ORM models
- ├── repositories/    # Data access layer
- ├── routers/         # API endpoints
- ├── schemas/         # Pydantic models (data validation)
- ├── services/        # Business logic layer
- └── main.py          # Application entry point
-```
-
-
-## Project launch  (Note: Section to be updated after Docker deployment and pushing to remote repository)
-  # Clone the repository
-    bash
-    git clone https://github.com/DamianMarchewka/Task-Manager-API
-    cd task-manager-api
-
-  # Create and activate virtual environment
-    python -m venv venv
-    source venv/bin/activate  # Linux/Mac
-    or
-    venv\Scripts\activate   # Windows
-
-  # Install dependencies
-    pip install -r requirements.txt
-
-  # Run the application
-    uvicorn app.main:app --reload
-
-
-## API documentation
-Once the server is running, interactive Swagger documentation is available at:
-```
-http://127.0.0.1:8000/docs
+git clone https://github.com/DamianMarchewka/Task-Manager-API  
+cd Task-Manager-API
 ```
 
-## Sample requests
-Create a task POST /tasks/
-Request body:
+### Create virtual environment
 ```
-JSON
-POST /tasks/
-{
-"title": "Task 1",
-"description": "Sample description"
-}
+python -m venv venv
+```
+```  
+source venv/bin/activate  # Linux / Mac
+```
+```
+venv\Scripts\activate     # Windows
+```  
+
+### Install dependencies
+```
+pip install -r requirements.txt
+``` 
+
+### Run application
+```
+uvicorn app.main:app --reload
+```  
+
+---
+
+## 🐳 Docker
+
+### Build image
+```
+docker build -t task-api .
 ```
 
-## Tests
-To run the test suite, execute:
+### Run container
 ```
-bash
+docker run -p 8000:8000 task-api
+```
+
+---
+
+## 🐳 Docker Compose
+```
+docker compose up --build
+```
+
+---
+
+## 📖 API Documentation
+
+Once the application is running:
+
+- Swagger UI: http://127.0.0.1:8000/docs  
+- ReDoc: http://127.0.0.1:8000/redoc  
+
+FastAPI automatically generates interactive API documentation.
+
+---
+
+## 🧪 Tests
+
 pytest
-```
 
-## Status
-Project in progress — core CRUD functionality completed.
+Tests cover:
+- task creation
+- retrieval
+- update
+- deletion
+- validation logic
 
+---
 
-## Development plans
-- Adding users
-- JWT authorization
-- Separating auth into a separate service
-- Filtering tasks
+## 🔄 CI/CD
+
+This project uses GitHub Actions for Continuous Integration.
+
+On every push and pull request:
+
+- dependencies are installed
+- tests are executed (pytest)
+- Docker image is built
+- project integrity is validated
+
+---
+
+## 📊 Project Status
+
+✔ Core CRUD functionality completed  
+✔ Clean layered architecture implemented  
+✔ Docker containerization added  
+✔ CI/CD pipeline configured (GitHub Actions)  
+✔ Test suite implemented  
+
+---
+
+## 🚀 Future Improvements
+
+- JWT authentication system  
+- User management module  
+- Role-based access control  
+- Advanced filtering and sorting  
+- Pagination improvements  
+- Migration to PostgreSQL (future project version)
