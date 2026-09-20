@@ -41,7 +41,6 @@ def test_task_sorting_title_desc(client: TestClient):
     response = client.get("/tasks/?sort_by=title&order=desc")
     data = response.json()
     titles = [task["title"] for task in data]
-    print(titles)
 
     assert response.status_code == 200
     assert len(data) == 3

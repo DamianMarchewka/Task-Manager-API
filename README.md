@@ -63,7 +63,9 @@ This separation improves maintainability and scalability.
 
 ### Clone repository
 ```
-git clone https://github.com/DamianMarchewka/Task-Manager-API  
+git clone https://github.com/DamianMarchewka/Task-Manager-API 
+```
+``` 
 cd Task-Manager-API
 ```
 
@@ -71,11 +73,13 @@ cd Task-Manager-API
 ```
 python -m venv venv
 ```
+Linux/McOS
 ```  
-source venv/bin/activate  # Linux / Mac
+source venv/bin/activate
 ```
+Windows
 ```
-venv\Scripts\activate     # Windows
+venv\Scripts\activate
 ```  
 
 ### Install dependencies
